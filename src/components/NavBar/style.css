@@ -1,0 +1,11 @@
+.nav    {
+    /* height: 8vh; */
+    width: 95%;
+    box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.5);
+    margin: 10px auto;
+    border-radius: 5px;
+}
+.menuIcon {
+    font-size: 22px;
+    color: #333;
+}
