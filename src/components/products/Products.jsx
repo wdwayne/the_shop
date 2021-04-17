@@ -1,7 +1,13 @@
 import Product from './product/product'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Spinner } from 'react-bootstrap'
 
 const Products = ({ products, onAddToCart }) => {
+    if (!products) return (
+        <div className='d-flex justify-content-center mt-5 '>
+            <Spinner animation="border" />
+        </div>
+    );
+
     return (
         <Container>
             <Row>
