@@ -4,7 +4,7 @@ import { TiDelete } from 'react-icons/ti'
 import './style.css'
 
 const CartItem = ( { item, updateCartQuantity, rmFromCart } ) => {
-    // console.log(item);
+    
     return (
         <div>
             <Card className='card m-2'>

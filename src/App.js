@@ -8,10 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState({})
+  const [cart, setCart] = useState({});
+  const [indevidualProduct, setIndevidualProduct] = useState({});
 
   const fetchProducts = async () => {
-    const {data} = await commerce.products.list();
+    const { data } = await commerce.products.list();
 
     setProducts(data);
   }
@@ -44,18 +45,25 @@ function App() {
     setCart(cart)
   }
 
+  const fetchProduct = async (productid) => {
+    const response = await commerce.products.retrieve(productid);
+
+    setIndevidualProduct(response);
+  }
+
   useEffect(() => {
    fetchProducts();
     fetchCart();
   })
-  console.log(cart);
+
+  console.log(indevidualProduct);
 
   return (
     <Router>
       <NavBar totalItems={cart.total_items} />
       <Switch>
         <Route exact path='/'>
-          <Products products={products} onAddToCart={handleAddToCart} />
+          <Products products={products} indevidualProduct={indevidualProduct} onAddToCart={handleAddToCart} fetchProduct={fetchProduct} />
         </Route>
         <Route exact path='/cart'>
           <Cart cart={cart} updateCartQuantity={updateCartQuantity} rmFromCart={rmFromCart} emptyCart={emptyCart} />
